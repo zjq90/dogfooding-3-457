@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.sysapi.mapper.DealRecordMapper">
+
+    <resultMap id="dealRecordWithDealer" type="com.oa.sysapi.entity.DealRecord">
+        <id property="id" column="id"/>
+        <result property="claimVoucherId" column="claim_voucher_id"/>
+        <result property="dealId" column="deal_id"/>
+        <result property="dealTime" column="deal_time"/>
+        <result property="dealType" column="deal_type"/>
+        <result property="dealResult" column="deal_result"/>
+        <result property="comment" column="comment"/>
+        <association property="dealer" javaType="com.oa.sysapi.entity.Employee">
+            <result property="name" column="dealer_name"/>
+            <result property="post" column="dealer_post"/>
+        </association>
+    </resultMap>
+
+    <select id="selectByClaimVoucherId" resultMap="dealRecordWithDealer">
+        SELECT dr.id, dr.claim_voucher_id, dr.deal_id, dr.deal_time, 
+               dr.deal_type, dr.deal_result, dr.comment,
+               e.name AS dealer_name, e.post AS dealer_post
+        FROM deal_record dr
+        LEFT JOIN employee e ON e.id = dr.deal_id
+        WHERE dr.claim_voucher_id = #{claimVoucherId}
+        ORDER BY dr.deal_time
+    </select>
+
+</mapper>
