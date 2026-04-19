@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.claim.mapper.EmployeeMapper">
+
+    <resultMap id="employeeWithDepartment" type="com.oa.common.entity.Employee">
+        <id property="id" column="id"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="departmentId" column="department_id"/>
+        <result property="post" column="post"/>
+        <association property="department" javaType="com.oa.common.entity.Department">
+            <id property="id" column="dept_id"/>
+            <result property="name" column="dept_name"/>
+        </association>
+    </resultMap>
+
+    <select id="selectWithDepartment" resultMap="employeeWithDepartment">
+        SELECT e.id, e.password, e.name, e.department_id, e.post,
+               d.id AS dept_id, d.name AS dept_name
+        FROM employee e
+        LEFT JOIN department d ON d.id = e.department_id
+        WHERE e.id = #{id}
+    </select>
+
+    <select id="selectByDepartmentAndPost" resultMap="employeeWithDepartment">
+        SELECT e.id, e.password, e.name, e.department_id, e.post,
+               d.id AS dept_id, d.name AS dept_name
+        FROM employee e
+        LEFT JOIN department d ON d.id = e.department_id
+        <where>
+            <if test="departmentId != null and departmentId != ''">
+                AND e.department_id = #{departmentId}
+            </if>
+            <if test="post != null and post != ''">
+                AND e.post = #{post}
+            </if>
+        </where>
+    </select>
+
+</mapper>
