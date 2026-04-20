@@ -33,7 +33,4 @@ public class DealRecord implements Serializable {
     private String dealResult;
 
     private String comment;
-
-    @TableField(exist = false)
-    private String dealerName;
 }

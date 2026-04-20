@@ -24,7 +24,4 @@ public class Employee implements Serializable {
     private String departmentId;
 
     private String post;
-
-    @TableField(exist = false)
-    private String departmentName;
 }

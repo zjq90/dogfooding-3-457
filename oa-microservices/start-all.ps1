@@ -1,80 +1,49 @@
-#!/usr/bin/env pwsh
-# OA System Microservices Startup Script
+# OA Microservices Startup Script
+# This script starts all microservices
 
-Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "    OA System Microservices Startup" -ForegroundColor Cyan
-Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host ""
-
-# Create data directory
-if (!(Test-Path "data")) {
-    New-Item -ItemType Directory -Path "data" | Out-Null
-}
+Write-Host "Starting OA Microservices..." -ForegroundColor Green
 
 # Function to start a service
-function Start-ServiceProcess {
+function Start-Service {
     param(
-        [string]$Name,
-        [string]$JarPath,
+        [string]$ServiceName,
+        [string]$ServicePath,
         [int]$Port
     )
 
-    Write-Host "Starting $Name (Port: $Port)..." -ForegroundColor Green
+    Write-Host "Starting $ServiceName on port $Port..." -ForegroundColor Yellow
 
-    $proc = Start-Process -FilePath "java" -ArgumentList "-jar", $JarPath -WorkingDirectory (Get-Location) -PassThru -WindowStyle Hidden
+    # Change to the service directory and start it
+    $job = Start-Job -ScriptBlock {
+        param($path, $name)
+        Set-Location $path
+        & mvn spring-boot:run -q
+    } -ArgumentList $ServicePath, $ServiceName
 
-    Start-Sleep -Seconds 3
-
-    # Check if service is running
-    try {
-        $response = Invoke-WebRequest -Uri "http://localhost:$Port/actuator/health" -Method GET -ErrorAction SilentlyContinue -TimeoutSec 2
-        if ($response.StatusCode -eq 200) {
-            Write-Host "$Name started successfully!" -ForegroundColor Green
-            return $true
-        }
-    } catch {
-        # Service might not have actuator, try a simple connection
-        try {
-            $tcp = New-Object System.Net.Sockets.TcpClient
-            $tcp.Connect("localhost", $Port)
-            $tcp.Close()
-            Write-Host "$Name started successfully!" -ForegroundColor Green
-            return $true
-        } catch {
-            Write-Host "$Name may not be fully started yet, continuing..." -ForegroundColor Yellow
-            return $true
-        }
-    }
-    return $true
+    return $job
 }
 
-# Start services
-$services = @(
-    @{ Name = "Employee Service"; Jar = "employee-service\target\employee-service-1.0.0.jar"; Port = 8081 },
-    @{ Name = "Claim Service"; Jar = "claim-service\target\claim-service-1.0.0.jar"; Port = 8082 },
-    @{ Name = "Auth Service"; Jar = "auth-service\target\auth-service-1.0.0.jar"; Port = 8083 },
-    @{ Name = "Gateway"; Jar = "gateway\target\gateway-1.0.0.jar"; Port = 8080 }
-)
+# Get the root directory
+$rootDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 
-foreach ($service in $services) {
-    Start-ServiceProcess -Name $service.Name -JarPath $service.Jar -Port $service.Port
-    Start-Sleep -Seconds 2
+# Start Employee Service (Port 8081)
+$employeeServiceJob = Start-Service -ServiceName "Employee Service" -ServicePath "$rootDir\employee-service" -Port 8081
+Start-Sleep -Seconds 5
+
+# Start Claim Service (Port 8082)
+$claimServiceJob = Start-Service -ServiceName "Claim Service" -ServicePath "$rootDir\claim-service" -Port 8082
+Start-Sleep -Seconds 5
+
+# Start Auth Service (Port 8083)
+$authServiceJob = Start-Service -ServiceName "Auth Service" -ServicePath "$rootDir\auth-service" -Port 8083
+
+Write-Host "`nAll services are starting..." -ForegroundColor Green
+Write-Host "Employee Service: http://localhost:8081" -ForegroundColor Cyan
+Write-Host "Claim Service: http://localhost:8082" -ForegroundColor Cyan
+Write-Host "Auth Service: http://localhost:8083" -ForegroundColor Cyan
+Write-Host "`nPress Ctrl+C to stop all services" -ForegroundColor Red
+
+# Keep the script running
+while ($true) {
+    Start-Sleep -Seconds 1
 }
-
-Write-Host ""
-Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host "All services started!" -ForegroundColor Green
-Write-Host ""
-Write-Host "Gateway:        http://localhost:8080" -ForegroundColor Yellow
-Write-Host "Employee:       http://localhost:8081" -ForegroundColor Yellow
-Write-Host "Claim:          http://localhost:8082" -ForegroundColor Yellow
-Write-Host "Auth:           http://localhost:8083" -ForegroundColor Yellow
-Write-Host "H2 Console:     http://localhost:8080/h2-console" -ForegroundColor Yellow
-Write-Host "==========================================" -ForegroundColor Cyan
-Write-Host ""
-Write-Host "Press any key to stop all services..." -ForegroundColor Magenta
-$null = $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyDown")
-
-# Stop all Java processes
-Get-Process -Name "java" -ErrorAction SilentlyContinue | Stop-Process -Force
-Write-Host "All services stopped." -ForegroundColor Green

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.claim.mapper.ClaimVoucherMapper">
+
+    <resultMap id="BaseResultMap" type="com.oa.claim.entity.ClaimVoucher">
+        <id column="id" property="id"/>
+        <result column="cause" property="cause"/>
+        <result column="create_id" property="createId"/>
+        <result column="create_time" property="createTime"/>
+        <result column="next_deal_id" property="nextDealId"/>
+        <result column="total_amount" property="totalAmount"/>
+        <result column="status" property="status"/>
+    </resultMap>
+
+    <select id="selectByCreateId" resultMap="BaseResultMap">
+        SELECT * FROM claim_voucher WHERE create_id = #{createId} ORDER BY create_time DESC
+    </select>
+
+    <select id="selectByNextDealId" resultMap="BaseResultMap">
+        SELECT * FROM claim_voucher WHERE next_deal_id = #{nextDealId} ORDER BY create_time DESC
+    </select>
+
+</mapper>

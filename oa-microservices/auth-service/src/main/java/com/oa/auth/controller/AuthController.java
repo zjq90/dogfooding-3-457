@@ -1,13 +1,13 @@
 package com.oa.auth.controller;
 
+import com.oa.common.JwtUtil;
+import com.oa.common.Result;
 import com.oa.auth.dto.ChangePasswordDTO;
 import com.oa.auth.dto.LoginDTO;
 import com.oa.auth.entity.Employee;
 import com.oa.auth.entity.Log;
 import com.oa.auth.service.AuthService;
 import com.oa.auth.service.LogService;
-import com.oa.common.JwtUtil;
-import com.oa.common.Result;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;

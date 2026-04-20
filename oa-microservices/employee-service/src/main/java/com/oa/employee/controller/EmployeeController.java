@@ -52,4 +52,9 @@ public class EmployeeController {
         data.put("posts", Constants.getPosts());
         return Result.success(data);
     }
+
+    @GetMapping("/by-department-and-post")
+    public Result<List<Employee>> listByDepartmentAndPost(@RequestParam String departmentId, @RequestParam String post) {
+        return Result.success(employeeService.listByDepartmentAndPost(departmentId, post));
+    }
 }

@@ -24,7 +24,4 @@ public class Log implements Serializable {
     private Date operationTime;
 
     private String operation;
-
-    @TableField(exist = false)
-    private String employeeName;
 }

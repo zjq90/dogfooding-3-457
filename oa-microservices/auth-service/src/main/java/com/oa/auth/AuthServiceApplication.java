@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 @MapperScan("com.oa.auth.mapper")
 public class AuthServiceApplication {
-
     public static void main(String[] args) {
         SpringApplication.run(AuthServiceApplication.class, args);
     }

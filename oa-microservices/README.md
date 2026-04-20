@@ -1,121 +1,148 @@
-# OA System Microservices
-
-OA系统微服务架构重构项目
+# OA 微服务架构
 
 ## 项目结构
 
 ```
 oa-microservices/
-├── common/                 # 公共模块（工具类、常量、JWT等）
-├── employee-service/       # 员工服务（端口：8081）
+├── common/                  # 公共模块
+│   ├── Result.java         # 统一响应结果
+│   ├── Constants.java      # 常量定义
+│   └── JwtUtil.java        # JWT工具类
+├── employee-service/        # 员工服务 (端口: 8081)
 │   ├── 员工管理模块
 │   └── 部门管理模块
-├── claim-service/          # 报销服务（端口：8082）
+├── claim-service/           # 报销服务 (端口: 8082)
 │   └── 报销单模块
-├── auth-service/           # 认证服务（端口：8083）
-│   ├── 认证模块
-│   └── 日志模块
-└── gateway/                # 网关服务（端口：8080）
+└── auth-service/            # 认证服务 (端口: 8083)
+    ├── 认证模块
+    └── 日志模块
 ```
 
-## 技术栈
+## 服务说明
 
-- Spring Boot 2.7.18
-- MyBatis-Plus 3.5.3.1
-- H2 Database（文件模式，共享数据）
-- JWT 认证
-- Spring Cloud Gateway
+### 1. 员工服务 (employee-service)
+- **端口**: 8081
+- **功能**:
+  - 员工CRUD操作
+  - 部门CRUD操作
+  - 职位管理
+- **API端点**:
+  - `GET /api/employees` - 获取所有员工
+  - `GET /api/employees/{id}` - 获取员工详情
+  - `POST /api/employees` - 创建员工
+  - `PUT /api/employees` - 更新员工
+  - `DELETE /api/employees/{id}` - 删除员工
+  - `GET /api/employees/posts` - 获取职位列表
+  - `GET /api/departments` - 获取所有部门
+  - `GET /api/departments/{id}` - 获取部门详情
+  - `POST /api/departments` - 创建部门
+  - `PUT /api/departments` - 更新部门
+  - `DELETE /api/departments/{id}` - 删除部门
+
+### 2. 报销服务 (claim-service)
+- **端口**: 8082
+- **功能**:
+  - 报销单管理
+  - 报销项管理
+  - 处理记录管理
+- **API端点**:
+  - `GET /api/claim-vouchers/items` - 获取报销项类型
+  - `GET /api/claim-vouchers` - 获取所有报销单
+  - `GET /api/claim-vouchers/{id}` - 获取报销单详情
+  - `POST /api/claim-vouchers` - 创建报销单
+  - `PUT /api/claim-vouchers` - 更新报销单
+  - `GET /api/claim-vouchers/self` - 获取自己的报销单
+  - `GET /api/claim-vouchers/deal` - 获取待处理的报销单
+  - `POST /api/claim-vouchers/{id}/submit` - 提交报销单
+  - `POST /api/claim-vouchers/deal` - 处理报销单
+
+### 3. 认证服务 (auth-service)
+- **端口**: 8083
+- **功能**:
+  - 用户登录认证
+  - 密码修改
+  - 操作日志管理
+- **API端点**:
+  - `POST /api/auth/login` - 用户登录
+  - `POST /api/auth/change-password` - 修改密码
+  - `GET /api/auth/info` - 获取当前用户信息
+  - `GET /api/logs` - 获取操作日志
+  - `DELETE /api/logs/{id}` - 删除日志
 
 ## 启动方式
 
-### 方式一：使用启动脚本（推荐）
-
-```bash
-start-services.bat
+### 方式1: 使用PowerShell脚本一键启动
+```powershell
+.\start-all.ps1
 ```
 
-### 方式二：手动启动
-
-1. 编译项目
+### 方式2: 分别启动各个服务
 ```bash
-mvn clean install -DskipTests
-```
+# 编译公共模块
+cd common
+mvn clean install
 
-2. 启动各个服务（每个服务单独终端）
-```bash
-# 员工服务
-cd employee-service
+# 启动员工服务
+cd ../employee-service
 mvn spring-boot:run
 
-# 报销服务
-cd claim-service
+# 启动报销服务
+cd ../claim-service
 mvn spring-boot:run
 
-# 认证服务
-cd auth-service
-mvn spring-boot:run
-
-# 网关
-cd gateway
+# 启动认证服务
+cd ../auth-service
 mvn spring-boot:run
 ```
 
-## 服务端口
+### 方式3: 使用Maven构建后启动
+```bash
+# 在根目录构建所有模块
+mvn clean install
 
-| 服务 | 端口 |
-|------|------|
-| Gateway | 8080 |
-| Employee Service | 8081 |
-| Claim Service | 8082 |
-| Auth Service | 8083 |
+# 分别启动各个服务
+cd employee-service/target
+java -jar employee-service-1.0.0.jar
 
-## API 接口
+cd claim-service/target
+java -jar claim-service-1.0.0.jar
 
-### 认证服务 (Auth Service)
-- POST `/api/auth/login` - 登录
-- POST `/api/auth/change-password` - 修改密码
-- GET `/api/auth/info` - 获取当前用户信息
-- GET `/api/logs` - 获取日志列表
-- DELETE `/api/logs/{id}` - 删除日志
-
-### 员工服务 (Employee Service)
-- GET `/api/employees` - 获取员工列表
-- GET `/api/employees/{id}` - 获取员工详情
-- POST `/api/employees` - 创建员工
-- PUT `/api/employees` - 更新员工
-- DELETE `/api/employees/{id}` - 删除员工
-- GET `/api/employees/posts` - 获取职位列表
-- GET `/api/departments` - 获取部门列表
-- GET `/api/departments/{id}` - 获取部门详情
-- POST `/api/departments` - 创建部门
-- PUT `/api/departments` - 更新部门
-- DELETE `/api/departments/{id}` - 删除部门
-
-### 报销服务 (Claim Service)
-- GET `/api/claim-vouchers/items` - 获取报销项目列表
-- POST `/api/claim-vouchers` - 创建报销单
-- PUT `/api/claim-vouchers` - 更新报销单
-- GET `/api/claim-vouchers/{id}` - 获取报销单详情
-- GET `/api/claim-vouchers/self` - 获取自己的报销单
-- GET `/api/claim-vouchers/deal` - 获取待处理的报销单
-- POST `/api/claim-vouchers/{id}/submit` - 提交报销单
-- POST `/api/claim-vouchers/deal` - 处理报销单
+cd auth-service/target
+java -jar auth-service-1.0.0.jar
+```
 
 ## 数据库
 
-使用H2文件数据库，所有服务共享同一数据库文件（`./data/oa`）
+所有服务使用统一的H2内存数据库，数据库配置：
+- **URL**: jdbc:h2:mem:oa
+- **用户名**: sa
+- **密码**: (空)
+- **H2 Console**: http://localhost:{port}/h2-console
 
-H2 Console访问地址：http://localhost:8080/h2-console
-- JDBC URL: `jdbc:h2:file:./data/oa`
-- Username: `sa`
-- Password: (空)
+## 认证方式
+
+所有受保护的API都需要在请求头中携带JWT Token：
+```
+Authorization: Bearer {token}
+```
+
+Token通过登录接口获取：
+```bash
+POST http://localhost:8083/api/auth/login
+Content-Type: application/json
+
+{
+  "id": "y1004",
+  "password": "123456"
+}
+```
 
 ## 测试账号
 
-| 工号 | 密码 | 姓名 | 职位 | 部门 |
+| 工号 | 姓名 | 部门 | 职位 | 密码 |
 |------|------|------|------|------|
-| z1001 | 123456 | 李世民 | 总经理 | 总经理办公室 |
-| c1002 | 123456 | 赵匡胤 | 财务 | 财务部 |
-| y1003 | 123456 | 忽必烈 | 部门经理 | 研发部 |
-| y1004 | 123456 | 朱元璋 | 员工 | 研发部 |
-| x1005 | 123456 | 爱新觉罗.福临 | 部门经理 | 销售部 |
+| z1001 | 李世民 | 总经理办公室 | 总经理 | 123456 |
+| c1002 | 赵匡胤 | 财务部 | 财务 | 123456 |
+| y1003 | 忽必烈 | 研发部 | 部门经理 | 123456 |
+| y1004 | 朱元璋 | 研发部 | 员工 | 123456 |
+| x1005 | 爱新觉罗.福临 | 销售部 | 部门经理 | 123456 |

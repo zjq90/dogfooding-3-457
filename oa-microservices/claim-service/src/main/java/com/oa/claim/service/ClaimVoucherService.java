@@ -11,17 +11,17 @@ public interface ClaimVoucherService {
 
     void save(ClaimVoucherDTO dto);
 
-    void update(ClaimVoucherDTO dto);
-
     ClaimVoucher getById(Integer id);
+
+    List<ClaimVoucherItem> listItemsByClaimVoucherId(Integer claimVoucherId);
+
+    List<DealRecord> listRecordsByClaimVoucherId(Integer claimVoucherId);
 
     List<ClaimVoucher> listByCreateId(String createId);
 
     List<ClaimVoucher> listByNextDealId(String nextDealId);
 
-    List<ClaimVoucherItem> listItemsByClaimVoucherId(Integer claimVoucherId);
-
-    List<DealRecord> listRecordsByClaimVoucherId(Integer claimVoucherId);
+    void update(ClaimVoucherDTO dto);
 
     void submit(Integer id);
 

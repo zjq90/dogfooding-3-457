@@ -15,18 +15,17 @@ public class AuthServiceImpl implements AuthService {
 
     @Override
     public Employee login(String id, String password) {
-        Employee employee = employeeMapper.selectWithDepartment(id);
-        if (employee == null) {
-            return null;
+        Employee employee = employeeMapper.selectById(id);
+        if (employee != null && employee.getPassword().equals(password)) {
+            return employee;
         }
-        if (!employee.getPassword().equals(password)) {
-            return null;
-        }
-        return employee;
+        return null;
     }
 
     @Override
-    public void changePassword(String id, String newPassword) {
-        employeeMapper.updatePassword(id, newPassword);
+    public void changePassword(String employeeId, String newPassword) {
+        Employee employee = employeeMapper.selectById(employeeId);
+        employee.setPassword(newPassword);
+        employeeMapper.updateById(employee);
     }
 }

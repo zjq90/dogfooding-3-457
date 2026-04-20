@@ -32,10 +32,4 @@ public class ClaimVoucher implements Serializable {
     private Double totalAmount;
 
     private String status;
-
-    @TableField(exist = false)
-    private String creatorName;
-
-    @TableField(exist = false)
-    private String dealerName;
 }

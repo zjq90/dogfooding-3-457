@@ -6,5 +6,5 @@ public interface AuthService {
 
     Employee login(String id, String password);
 
-    void changePassword(String id, String newPassword);
+    void changePassword(String employeeId, String newPassword);
 }

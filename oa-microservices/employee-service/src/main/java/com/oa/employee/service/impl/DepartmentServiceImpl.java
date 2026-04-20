@@ -36,6 +36,6 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public List<Department> listAll() {
-        return departmentMapper.selectList(null);
+        return departmentMapper.selectAll();
     }
 }
