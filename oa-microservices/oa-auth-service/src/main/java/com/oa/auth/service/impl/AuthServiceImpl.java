@@ -1,8 +1,8 @@
 package com.oa.auth.service.impl;
 
+import com.oa.common.entity.Employee;
 import com.oa.auth.mapper.EmployeeMapper;
 import com.oa.auth.service.AuthService;
-import com.oa.common.entity.Employee;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;

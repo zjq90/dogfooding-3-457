@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oa.claim.mapper.DealRecordMapper">
+<mapper namespace="com.oa.sysapi.mapper.DealRecordMapper">
 
-    <resultMap id="dealRecordWithDealer" type="com.oa.common.entity.DealRecord">
+    <resultMap id="dealRecordWithDealer" type="com.oa.sysapi.entity.DealRecord">
         <id property="id" column="id"/>
         <result property="claimVoucherId" column="claim_voucher_id"/>
         <result property="dealId" column="deal_id"/>
@@ -10,7 +10,7 @@
         <result property="dealType" column="deal_type"/>
         <result property="dealResult" column="deal_result"/>
         <result property="comment" column="comment"/>
-        <association property="dealer" javaType="com.oa.common.entity.Employee">
+        <association property="dealer" javaType="com.oa.sysapi.entity.Employee">
             <result property="name" column="dealer_name"/>
             <result property="post" column="dealer_post"/>
         </association>

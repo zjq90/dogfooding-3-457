@@ -1,4 +1,4 @@
-package com.oa.common.util;
+package com.oa.common.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

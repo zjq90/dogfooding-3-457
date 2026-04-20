@@ -1,6 +1,5 @@
-package com.oa.claim.config;
+package com.oa.common.config;
 
-import com.oa.common.util.JwtUtil;
 import org.springframework.web.servlet.HandlerInterceptor;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +12,7 @@ public class AuthInterceptor implements HandlerInterceptor {
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             return true;
         }
-
+        
         String token = request.getHeader("Authorization");
         if (token != null && token.startsWith("Bearer ")) {
             token = token.substring(7);
@@ -28,7 +27,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                 return false;
             }
         }
-
+        
         response.setStatus(401);
         response.setContentType("application/json;charset=UTF-8");
         response.getWriter().write("{\"code\":401,\"message\":\"未登录\"}");

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="eb794102-ff56-4633-a811-50d9c1b539c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jdk8_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_datatype_jackson_datatype_jsr310_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_module_jackson_module_parameter_names_2_13_5.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_core_9_0_83.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_el_9_0_83.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apache_tomcat_embed_tomcat_embed_websocket_9_0_83.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_aspectj_aspectjweaver_1_9_7.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_2_5_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_4_3_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_2_7_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_json_2_7_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_tomcat_2_7_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_2_7_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_2_7_18.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_3_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_3_31.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_aop_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_test_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_validation_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_boot_spring_boot_starter_web_1_0_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/oa-auth-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/oa-auth-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/AuthServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/AuthServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/config/AuthInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/config/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/controller/AuthController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/controller/LogController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/mapper/LogMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/mapper/LogMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/LogService.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/LogService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/impl/AuthServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/impl/AuthServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/impl/LogServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/java/com/oa/auth/service/impl/LogServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/resources/mapper/EmployeeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-auth-service/src/main/resources/mapper/EmployeeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-auth-service/src/main/resources/mapper/LogMapper.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/oa-claim-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/oa-claim-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/ClaimServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/ClaimServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/config/AuthInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/config/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/java/com/oa/claim/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/ClaimVoucherItemMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/ClaimVoucherItemMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/ClaimVoucherMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/ClaimVoucherMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/DealRecordMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/DealRecordMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/EmployeeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-claim-service/src/main/resources/mapper/EmployeeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-common/oa-common.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-common/oa-common.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-common/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-common/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-common/src/main/java/com/oa/common/util/JwtUtil.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/oa-employee-service.iml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/oa-employee-service.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/EmployeeServiceApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/EmployeeServiceApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/config/AuthInterceptor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/config/GlobalExceptionHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/config/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/config/WebConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/controller/EmployeeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/java/com/oa/employee/controller/EmployeeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/resources/mapper/EmployeeMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/resources/mapper/EmployeeMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/oa-employee-service/src/main/resources/oa_h2.sql" beforeDir="false" afterPath="$PROJECT_DIR$/oa-employee-service/src/main/resources/oa_h2.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/start-services.ps1" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="D:\ProgramFiles\epository" />
+        <option name="mavenHome" value="D:\software\apache-maven-3.8.1" />
+        <option name="userSettingsFile" value="D:\software\apache-maven-3.8.1\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="3Cbad3LlIIY9EQbBHoN3VKciKAV" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Spring Boot.EmployeeServiceApplication">
+    <configuration name="AuthServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="oa-auth-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.oa.auth.AuthServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ClaimServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="oa-claim-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.oa.claim.ClaimServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="EmployeeServiceApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="oa-employee-service" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.oa.employee.EmployeeServiceApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="eb794102-ff56-4633-a811-50d9c1b539c0" name="Default Changelist" comment="" />
+      <created>1776656812305</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1776656812305</updated>
+      <workItem from="1776656813150" duration="898000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

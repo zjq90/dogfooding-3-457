@@ -1,27 +1,27 @@
 server:
-  port: 8083
+  port: 8080
 
 spring:
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:tcp://localhost:9092/./oa-db;MODE=MySQL
+    url: jdbc:h2:file:../oa-employee-service/oa_db;MODE=MySQL;DB_CLOSE_DELAY=-1;AUTO_SERVER=TRUE
     username: sa
-    password: 
+    password:
     hikari:
       maximum-pool-size: 10
       minimum-idle: 5
-      connection-timeout: 60000
+      connection-timeout: 30000
+      idle-timeout: 600000
+      max-lifetime: 1800000
+  sql:
+    init:
+      mode: never
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
   type-aliases-package: com.oa.common.entity
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
-
-jwt:
-  secret: oa-system-secret-key-for-jwt-token-generation-2024
-  expiration: 86400000
 
 logging:
   level:

@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oa.auth.mapper.LogMapper">
+<mapper namespace="com.oa.sysapi.mapper.LogMapper">
 
-    <resultMap id="logWithEmployee" type="com.oa.common.entity.Log">
+    <resultMap id="logWithEmployee" type="com.oa.sysapi.entity.Log">
         <id property="id" column="id"/>
         <result property="employeeId" column="employee_id"/>
         <result property="operationTime" column="operation_time"/>
         <result property="operation" column="operation"/>
-        <association property="employee" javaType="com.oa.common.entity.Employee">
+        <association property="employee" javaType="com.oa.sysapi.entity.Employee">
             <result property="name" column="employee_name"/>
         </association>
     </resultMap>

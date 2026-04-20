@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.oa.employee.mapper.EmployeeMapper">
+<mapper namespace="com.oa.sysapi.mapper.EmployeeMapper">
 
-    <resultMap id="employeeWithDepartment" type="com.oa.common.entity.Employee">
+    <resultMap id="employeeWithDepartment" type="com.oa.sysapi.entity.Employee">
         <id property="id" column="id"/>
         <result property="password" column="password"/>
         <result property="name" column="name"/>
         <result property="departmentId" column="department_id"/>
         <result property="post" column="post"/>
-        <association property="department" javaType="com.oa.common.entity.Department">
+        <association property="department" javaType="com.oa.sysapi.entity.Department">
             <id property="id" column="dept_id"/>
             <result property="name" column="dept_name"/>
         </association>

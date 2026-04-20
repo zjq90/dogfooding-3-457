@@ -1,8 +1,8 @@
-package com.oa.auth.controller;
+package com.oa.claim.controller;
 
-import com.oa.auth.service.LogService;
 import com.oa.common.common.Result;
 import com.oa.common.entity.Log;
+import com.oa.claim.service.LogService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
