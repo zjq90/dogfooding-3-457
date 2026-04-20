@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.sysapi.mapper.ClaimVoucherMapper">
+
+    <resultMap id="claimVoucherWithDetails" type="com.oa.sysapi.entity.ClaimVoucher">
+        <id property="id" column="id"/>
+        <result property="cause" column="cause"/>
+        <result property="createId" column="create_id"/>
+        <result property="createTime" column="create_time"/>
+        <result property="nextDealId" column="next_deal_id"/>
+        <result property="totalAmount" column="total_amount"/>
+        <result property="status" column="status"/>
+        <association property="creator" javaType="com.oa.sysapi.entity.Employee">
+            <result property="name" column="creator_name"/>
+            <result property="post" column="creator_post"/>
+        </association>
+        <association property="dealer" javaType="com.oa.sysapi.entity.Employee">
+            <result property="name" column="dealer_name"/>
+            <result property="post" column="dealer_post"/>
+        </association>
+    </resultMap>
+
+    <select id="selectWithDetails" resultMap="claimVoucherWithDetails">
+        SELECT cv.id, cv.cause, cv.create_id, cv.create_time, cv.next_deal_id, 
+               cv.total_amount, cv.status,
+               ce.name AS creator_name, ce.post AS creator_post,
+               de.name AS dealer_name, de.post AS dealer_post
+        FROM claim_voucher cv
+        LEFT JOIN employee ce ON ce.id = cv.create_id
+        LEFT JOIN employee de ON de.id = cv.next_deal_id
+        WHERE cv.id = #{id}
+    </select>
+
+    <select id="selectByCreateId" resultMap="claimVoucherWithDetails">
+        SELECT cv.id, cv.cause, cv.create_id, cv.create_time, cv.next_deal_id, 
+               cv.total_amount, cv.status,
+               ce.name AS creator_name, ce.post AS creator_post,
+               de.name AS dealer_name, de.post AS dealer_post
+        FROM claim_voucher cv
+        LEFT JOIN employee ce ON ce.id = cv.create_id
+        LEFT JOIN employee de ON de.id = cv.next_deal_id
+        WHERE cv.create_id = #{createId}
+        ORDER BY cv.create_time DESC
+    </select>
+
+    <select id="selectByNextDealId" resultMap="claimVoucherWithDetails">
+        SELECT cv.id, cv.cause, cv.create_id, cv.create_time, cv.next_deal_id, 
+               cv.total_amount, cv.status,
+               ce.name AS creator_name, ce.post AS creator_post,
+               de.name AS dealer_name, de.post AS dealer_post
+        FROM claim_voucher cv
+        LEFT JOIN employee ce ON ce.id = cv.create_id
+        LEFT JOIN employee de ON de.id = cv.next_deal_id
+        WHERE cv.next_deal_id = #{nextDealId}
+        ORDER BY cv.create_time DESC
+    </select>
+
+</mapper>
