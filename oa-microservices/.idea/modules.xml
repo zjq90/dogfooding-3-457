@@ -6,8 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/oa-claim-service/oa-claim-service.iml" filepath="$PROJECT_DIR$/oa-claim-service/oa-claim-service.iml" />
       <module fileurl="file://$PROJECT_DIR$/oa-common/oa-common.iml" filepath="$PROJECT_DIR$/oa-common/oa-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/oa-employee-service/oa-employee-service.iml" filepath="$PROJECT_DIR$/oa-employee-service/oa-employee-service.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oa-gateway/oa-gateway.iml" filepath="$PROJECT_DIR$/oa-gateway/oa-gateway.iml" />
-      <module fileurl="file://$PROJECT_DIR$/oa-parent.iml" filepath="$PROJECT_DIR$/oa-parent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/oa-microservices.iml" filepath="$PROJECT_DIR$/oa-microservices.iml" />
     </modules>
   </component>
 </project>

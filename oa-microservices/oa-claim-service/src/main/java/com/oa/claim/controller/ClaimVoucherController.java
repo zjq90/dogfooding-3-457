@@ -10,12 +10,13 @@ import com.oa.claim.service.ClaimVoucherService;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/claim")
+@RequestMapping("/api/claim-vouchers")
 public class ClaimVoucherController {
 
     @Resource
@@ -29,7 +30,11 @@ public class ClaimVoucherController {
     }
 
     @PostMapping
-    public Result<Void> save(@RequestBody ClaimVoucherDTO dto) {
+    public Result<Void> save(@RequestBody ClaimVoucherDTO dto, HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        if (employeeId != null) {
+            dto.getClaimVoucher().setCreateId(employeeId);
+        }
         claimVoucherService.save(dto);
         return Result.success();
     }
@@ -43,30 +48,40 @@ public class ClaimVoucherController {
         return Result.success(data);
     }
 
-    @GetMapping("/self/{createId}")
-    public Result<List<ClaimVoucher>> listByCreateId(@PathVariable String createId) {
-        return Result.success(claimVoucherService.listByCreateId(createId));
+    @GetMapping("/self")
+    public Result<List<ClaimVoucher>> listSelf(HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        return Result.success(claimVoucherService.listByCreateId(employeeId));
     }
 
-    @GetMapping("/deal/{nextDealId}")
-    public Result<List<ClaimVoucher>> listByNextDealId(@PathVariable String nextDealId) {
-        return Result.success(claimVoucherService.listByNextDealId(nextDealId));
+    @GetMapping("/deal")
+    public Result<List<ClaimVoucher>> listDeal(HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        return Result.success(claimVoucherService.listByNextDealId(employeeId));
     }
 
     @PutMapping
-    public Result<Void> update(@RequestBody ClaimVoucherDTO dto) {
+    public Result<Void> update(@RequestBody ClaimVoucherDTO dto, HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        if (employeeId != null) {
+            dto.getClaimVoucher().setCreateId(employeeId);
+        }
         claimVoucherService.update(dto);
         return Result.success();
     }
 
-    @PostMapping("/submit/{id}")
+    @PostMapping("/{id}/submit")
     public Result<Void> submit(@PathVariable Integer id) {
         claimVoucherService.submit(id);
         return Result.success();
     }
 
     @PostMapping("/deal")
-    public Result<Void> deal(@RequestBody DealRecord dealRecord) {
+    public Result<Void> deal(@RequestBody DealRecord dealRecord, HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        if (employeeId != null) {
+            dealRecord.setDealId(employeeId);
+        }
         claimVoucherService.deal(dealRecord);
         return Result.success();
     }

@@ -49,11 +49,4 @@ public class EmployeeServiceImpl implements EmployeeService {
     public List<Employee> listByDepartmentAndPost(String departmentId, String post) {
         return employeeMapper.selectByDepartmentAndPost(departmentId, post);
     }
-
-    @Override
-    public void updatePassword(String employeeId, String newPassword) {
-        Employee employee = employeeMapper.selectById(employeeId);
-        employee.setPassword(newPassword);
-        employeeMapper.updateById(employee);
-    }
 }

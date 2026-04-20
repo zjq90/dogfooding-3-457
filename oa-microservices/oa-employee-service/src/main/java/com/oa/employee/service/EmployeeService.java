@@ -19,6 +19,4 @@ public interface EmployeeService {
     List<Employee> listAll();
 
     List<Employee> listByDepartmentAndPost(String departmentId, String post);
-
-    void updatePassword(String employeeId, String newPassword);
 }

@@ -9,13 +9,13 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/department")
+@RequestMapping("/api/departments")
 public class DepartmentController {
 
     @Resource
     private DepartmentService departmentService;
 
-    @GetMapping("/list")
+    @GetMapping
     public Result<List<Department>> list() {
         return Result.success(departmentService.listAll());
     }

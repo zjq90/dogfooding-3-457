@@ -12,18 +12,17 @@
         <result property="comment" column="comment"/>
         <association property="dealer" javaType="com.oa.common.entity.Employee">
             <result property="name" column="dealer_name"/>
-            <result property="post" column="dealer_post"/>
         </association>
     </resultMap>
 
     <select id="selectByClaimVoucherId" resultMap="dealRecordWithDealer">
         SELECT dr.id, dr.claim_voucher_id, dr.deal_id, dr.deal_time, 
                dr.deal_type, dr.deal_result, dr.comment,
-               e.name AS dealer_name, e.post AS dealer_post
+               e.name AS dealer_name
         FROM deal_record dr
         LEFT JOIN employee e ON e.id = dr.deal_id
         WHERE dr.claim_voucher_id = #{claimVoucherId}
-        ORDER BY dr.deal_time
+        ORDER BY dr.deal_time ASC
     </select>
 
 </mapper>

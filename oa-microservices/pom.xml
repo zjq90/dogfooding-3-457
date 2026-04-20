@@ -12,18 +12,17 @@
     </parent>
 
     <groupId>com.oa</groupId>
-    <artifactId>oa-parent</artifactId>
+    <artifactId>oa-microservices</artifactId>
     <version>1.0.0</version>
     <packaging>pom</packaging>
-    <name>oa-parent</name>
-    <description>OA Microservices Parent</description>
+    <name>oa-microservices</name>
+    <description>OA Microservices Parent Project</description>
 
     <modules>
         <module>oa-common</module>
         <module>oa-employee-service</module>
         <module>oa-claim-service</module>
         <module>oa-auth-service</module>
-        <module>oa-gateway</module>
     </modules>
 
     <properties>
@@ -40,16 +39,19 @@
                 <artifactId>oa-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-boot-starter</artifactId>
                 <version>${mybatis-plus.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
             </dependency>
+
             <dependency>
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt-api</artifactId>
@@ -69,14 +71,5 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-        </plugins>
-    </build>
 
 </project>

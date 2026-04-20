@@ -12,13 +12,13 @@ import java.util.List;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/employee")
+@RequestMapping("/api/employees")
 public class EmployeeController {
 
     @Resource
     private EmployeeService employeeService;
 
-    @GetMapping("/list")
+    @GetMapping
     public Result<List<Employee>> list() {
         return Result.success(employeeService.listAll());
     }
@@ -54,8 +54,9 @@ public class EmployeeController {
     }
 
     @GetMapping("/search")
-    public Result<List<Employee>> search(@RequestParam(required = false) String departmentId,
-                                          @RequestParam(required = false) String post) {
+    public Result<List<Employee>> search(
+            @RequestParam(required = false) String departmentId,
+            @RequestParam(required = false) String post) {
         return Result.success(employeeService.listByDepartmentAndPost(departmentId, post));
     }
 }

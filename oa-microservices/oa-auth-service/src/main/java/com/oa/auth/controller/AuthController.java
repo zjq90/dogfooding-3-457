@@ -1,22 +1,23 @@
 package com.oa.auth.controller;
 
+import com.oa.auth.mapper.LogMapper;
+import com.oa.auth.service.AuthService;
 import com.oa.common.common.Result;
-import com.oa.common.config.JwtUtil;
 import com.oa.common.dto.ChangePasswordDTO;
 import com.oa.common.dto.LoginDTO;
 import com.oa.common.entity.Employee;
 import com.oa.common.entity.Log;
-import com.oa.auth.service.AuthService;
-import com.oa.auth.mapper.LogMapper;
+import com.oa.common.util.JwtUtil;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/auth")
 public class AuthController {
 
     @Resource
@@ -47,18 +48,19 @@ public class AuthController {
     }
 
     @PostMapping("/change-password")
-    public Result<Void> changePassword(@RequestBody ChangePasswordDTO dto) {
-        Employee employee = authService.login(dto.getEmployeeId(), dto.getOldPassword());
+    public Result<Void> changePassword(@RequestBody ChangePasswordDTO dto, HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
+        Employee employee = authService.login(employeeId, dto.getOldPassword());
         if (employee == null) {
             return Result.error("原密码错误");
         }
         if (!dto.getNewPassword().equals(dto.getConfirmPassword())) {
             return Result.error("两次输入的密码不一致");
         }
-        authService.changePassword(dto.getEmployeeId(), dto.getNewPassword());
+        authService.changePassword(employeeId, dto.getNewPassword());
 
         Log log = new Log();
-        log.setEmployeeId(dto.getEmployeeId());
+        log.setEmployeeId(employeeId);
         log.setOperationTime(new Date());
         log.setOperation("changePassword");
         logMapper.insert(log);
@@ -66,8 +68,9 @@ public class AuthController {
         return Result.success();
     }
 
-    @GetMapping("/info/{employeeId}")
-    public Result<Employee> getInfo(@PathVariable String employeeId) {
+    @GetMapping("/info")
+    public Result<Employee> getInfo(HttpServletRequest request) {
+        String employeeId = (String) request.getAttribute("currentEmployeeId");
         Employee employee = authService.login(employeeId, "");
         return Result.success(employee);
     }

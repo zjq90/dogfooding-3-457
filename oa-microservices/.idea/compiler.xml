@@ -7,7 +7,6 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="oa-common" />
-        <module name="oa-gateway" />
         <module name="oa-auth-service" />
         <module name="oa-employee-service" />
         <module name="oa-claim-service" />
@@ -18,9 +17,7 @@
       <module name="oa-claim-service" target="1.8" />
       <module name="oa-common" target="1.8" />
       <module name="oa-employee-service" target="1.8" />
-      <module name="oa-gateway" target="1.8" />
-      <module name="oa-parent" target="1.8" />
-      <module name="oa-starter" target="1.8" />
+      <module name="oa-microservices" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -29,8 +26,6 @@
       <module name="oa-claim-service" options="-parameters" />
       <module name="oa-common" options="-parameters" />
       <module name="oa-employee-service" options="-parameters" />
-      <module name="oa-gateway" options="-parameters" />
-      <module name="oa-starter" options="-parameters" />
     </option>
   </component>
 </project>

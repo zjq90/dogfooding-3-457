@@ -9,14 +9,14 @@ import javax.annotation.Resource;
 import java.util.List;
 
 @RestController
-@RequestMapping("/log")
+@RequestMapping("/api/logs")
 public class LogController {
 
     @Resource
     private LogService logService;
 
-    @GetMapping("/list/{employeeId}")
-    public Result<List<Log>> listByEmployeeId(@PathVariable String employeeId) {
+    @GetMapping
+    public Result<List<Log>> list(@RequestParam String employeeId) {
         return Result.success(logService.listByEmployeeId(employeeId));
     }
 

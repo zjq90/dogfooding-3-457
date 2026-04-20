@@ -6,7 +6,6 @@
         SELECT id, claim_voucher_id, item, amount, comment
         FROM claim_voucher_item
         WHERE claim_voucher_id = #{claimVoucherId}
-        ORDER BY id
     </select>
 
     <delete id="deleteByClaimVoucherId">

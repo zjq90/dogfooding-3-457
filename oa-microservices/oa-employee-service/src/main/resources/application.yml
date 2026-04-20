@@ -6,9 +6,12 @@ spring:
     name: oa-employee-service
   datasource:
     driver-class-name: org.h2.Driver
-    url: jdbc:h2:file:./data/oa;AUTO_SERVER=TRUE
+    url: jdbc:h2:mem:oa;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     username: sa
-    password:
+    password: 
+    hikari:
+      maximum-pool-size: 10
+      minimum-idle: 5
   h2:
     console:
       enabled: true
@@ -16,11 +19,12 @@ spring:
   sql:
     init:
       mode: always
-      schema-locations: classpath:oa_schema.sql
-      data-locations: classpath:oa_data.sql
+      schema-locations: classpath:oa_h2.sql
+      encoding: UTF-8
 
 mybatis-plus:
   mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.oa.common.entity
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

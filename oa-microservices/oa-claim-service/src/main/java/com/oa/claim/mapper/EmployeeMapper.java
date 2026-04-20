@@ -12,5 +12,7 @@ public interface EmployeeMapper extends BaseMapper<Employee> {
 
     Employee selectWithDepartment(@Param("id") String id);
 
+    List<Employee> selectAllWithDepartment();
+
     List<Employee> selectByDepartmentAndPost(@Param("departmentId") String departmentId, @Param("post") String post);
 }
