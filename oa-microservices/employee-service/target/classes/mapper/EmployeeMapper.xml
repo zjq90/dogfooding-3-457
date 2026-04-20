@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.employee.mapper.EmployeeMapper">
+
+    <resultMap id="BaseResultMap" type="com.oa.employee.entity.Employee">
+        <id column="id" property="id"/>
+        <result column="password" property="password"/>
+        <result column="name" property="name"/>
+        <result column="department_id" property="departmentId"/>
+        <result column="post" property="post"/>
+    </resultMap>
+
+    <resultMap id="WithDepartmentResultMap" type="com.oa.employee.entity.Employee" extends="BaseResultMap">
+        <association property="department" javaType="com.oa.employee.entity.Department">
+            <id column="dept_id" property="id"/>
+            <result column="dept_name" property="name"/>
+            <result column="dept_address" property="address"/>
+        </association>
+    </resultMap>
+
+    <select id="selectWithDepartment" resultMap="WithDepartmentResultMap">
+        SELECT
+            e.*,
+            d.id as dept_id,
+            d.name as dept_name,
+            d.address as dept_address
+        FROM employee e
+        LEFT JOIN department d ON e.department_id = d.id
+        WHERE e.id = #{id}
+    </select>
+
+    <select id="selectAllWithDepartment" resultMap="WithDepartmentResultMap">
+        SELECT
+            e.*,
+            d.id as dept_id,
+            d.name as dept_name,
+            d.address as dept_address
+        FROM employee e
+        LEFT JOIN department d ON e.department_id = d.id
+    </select>
+
+    <select id="selectByDepartmentAndPost" resultMap="BaseResultMap">
+        SELECT * FROM employee
+        WHERE department_id = #{departmentId} AND post = #{post}
+    </select>
+
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.oa.claim.mapper.ClaimVoucherItemMapper">
+
+    <resultMap id="BaseResultMap" type="com.oa.claim.entity.ClaimVoucherItem">
+        <id column="id" property="id"/>
+        <result column="claim_voucher_id" property="claimVoucherId"/>
+        <result column="item" property="item"/>
+        <result column="amount" property="amount"/>
+        <result column="comment" property="comment"/>
+    </resultMap>
+
+    <select id="selectByClaimVoucherId" resultMap="BaseResultMap">
+        SELECT * FROM claim_voucher_item WHERE claim_voucher_id = #{claimVoucherId}
+    </select>
+
+    <delete id="deleteByClaimVoucherId">
+        DELETE FROM claim_voucher_item WHERE claim_voucher_id = #{claimVoucherId}
+    </delete>
+
+</mapper>
